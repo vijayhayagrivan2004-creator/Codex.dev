@@ -1,33 +1,39 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // FAQ Accordion functionality
-    const faqItems = document.querySelectorAll(".faq-item");
+// Switch between pages
+function switchPage(pageId, element) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
 
-    faqItems.forEach(item => {
-        const question = item.querySelector(".faq-question");
-        
-        question.addEventListener("click", () => {
-            // Check if current item is active
-            const isActive = item.classList.contains("active");
-            
-            // Close all items
-            faqItems.forEach(faq => {
-                faq.classList.remove("active");
-                faq.querySelector(".faq-answer").style.maxHeight = null;
-            });
-            
-            // If the clicked item wasn't active, open it
-            if (!isActive) {
-                item.classList.add("active");
-                const answer = item.querySelector(".faq-answer");
-                // dynamically set max height based on content
-                answer.style.maxHeight = answer.scrollHeight + "px";
-            }
-        });
-    });
+    // Show selected page
+    document.getElementById(pageId).classList.add('active');
 
-    // Initialize the first FAQ item to ensure the CSS max-height transition works
-    const firstActiveFaq = document.querySelector(".faq-item.active .faq-answer");
-    if(firstActiveFaq) {
-        firstActiveFaq.style.maxHeight = firstActiveFaq.scrollHeight + "px";
+    // Update active nav link
+    if (element) {
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
     }
-});
+
+    // Close mobile menu
+    document.getElementById('sidebar').classList.remove('active');
+}
+
+// Mobile Toggle
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+}
+
+// Form Submission
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you! Message sent.');
+        contactForm.reset();
+    });
+}
