@@ -1,0 +1,94 @@
+:root {
+    --bg: #0b1118;
+    --card: #141b24;
+    --primary: #46b28c;
+    --text: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    text-align: center;
+    padding: 20px;
+}
+
+/* NAV */
+nav {
+    margin-bottom: 40px;
+}
+
+/* HERO */
+.hero h1 {
+    font-size: 2rem;
+}
+
+.hero span {
+    color: var(--primary);
+}
+
+.hero p {
+    margin: 15px 0;
+    color: gray;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: black;
+    border-radius: 20px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+/* PRICING */
+.pricing {
+    margin-top: 50px;
+}
+
+.cards {
+    display: grid;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.card h1 {
+    color: var(--primary);
+}
+
+.card ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.card li {
+    margin: 5px 0;
+}
+
+.popular {
+    border: 2px solid var(--primary);
+}
+
+/* CONTACT */
+#contact {
+    margin-top: 50px;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 50px;
+    color: gray;
+}
