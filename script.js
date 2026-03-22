@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 item.classList.add("active");
                 const answer = item.querySelector(".faq-answer");
                 // dynamically set max height based on content
-                answer.style.maxHeight = answer.scrollHeight + "px";
+                answer.style.maxHeight = answer.scrollHeight + "px"
             }
         });
     });
