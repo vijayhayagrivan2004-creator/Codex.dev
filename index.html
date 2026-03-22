@@ -1,97 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Codex.dev — From Idea to Website. Clean, responsive, and modern websites for individuals and small businesses. Built by Vijayhayagrivan." />
-  <title>Codex.dev — From Idea to Website</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    :root {
-      --primary: #6366f1;
-      --primary-dark: #4f46e5;
-      --accent: #8b5cf6;
-      --bg-dark: #0f172a;
-      --sidebar-bg: #1e293b;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --text-main: #f8fafc;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --glass-border: rgba(255, 255, 255, 0.1);
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex.dev — From Idea to Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
+    <button class="mobile-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 
-    h1, h2, h3, .logo-text { font-family: 'Poppins', sans-serif; }
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-icon">C</div>
+                <div class="logo-text"><span>Codex</span>.dev</div>
+            </div>
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-dark); }
-    ::-webkit-scrollbar-thumb { background: var(--sidebar-bg); border-radius: 10px; }
-    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">General</div>
+                <a class="nav-item active" onclick="switchPage('home', this)">
+                    <i class="fas fa-th-large"></i><span>Home</span>
+                </a>
+                <a class="nav-item" onclick="switchPage('portfolio', this)">
+                    <i class="fas fa-briefcase"></i><span>Portfolio</span>
+                </a>
+                <a class="nav-item" onclick="switchPage('contact', this)">
+                    <i class="fas fa-paper-plane"></i><span>Hire Me</span>
+                </a>
+            </nav>
 
-    /* Layout */
-    .app-container { display: flex; min-height: 100vh; }
+            <div class="sidebar-user">
+                <div class="user-avatar">VH</div>
+                <div class="user-info">
+                    <strong>Vijayhayagrivan</strong>
+                    <span>Full-Stack Developer</span>
+                </div>
+            </div>
+        </aside>
 
-    /* Sidebar */
-    .sidebar {
-      width: 280px;
-      background: var(--sidebar-bg);
-      height: 100vh;
-      position: fixed;
-      left: 0;
-      top: 0;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1.5rem;
-      border-right: 1px solid var(--glass-border);
-      z-index: 1000;
-      transition: var(--transition);
-    }
+        <main class="main-content">
+            
+            <div id="home" class="page active">
+                <section class="hero">
+                    <div class="hero-mesh"></div>
+                    <div class="hero-content">
+                        <div class="hero-badge">🚀 Available for new projects</div>
+                        <h1>From <span>Idea</span> to Digital <span>Reality</span>.</h1>
+                        <p>I build high-performance, responsive websites for small businesses and individuals looking to make a massive impact online.</p>
+                        <div class="btn-group">
+                            <button class="btn btn-primary" onclick="switchPage('portfolio')">View Projects</button>
+                            <button class="btn btn-outline" onclick="switchPage('contact')">Start a Project</button>
+                        </div>
+                    </div>
+                </section>
 
-    .sidebar-header { display: flex; align-items: center; gap: 12px; margin-bottom: 3rem; }
-    .logo-icon { 
-      background: var(--primary); 
-      width: 40px; height: 40px; 
-      display: flex; align-items: center; justify-content: center; 
-      font-weight: 800; border-radius: 10px; font-size: 1.2rem;
-    }
-    .logo-text { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.5px; }
-    .logo-text span { color: var(--primary); }
+                <div class="section-header">
+                    <span class="section-label">Expertise</span>
+                    <h2 class="section-title">What I Do</h2>
+                </div>
 
-    .nav-section-label { color: var(--text-muted); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1.5px; margin: 1.5rem 0 0.75rem 0.5rem; }
-    .nav-item {
-      display: flex; align-items: center; gap: 15px;
-      padding: 12px 15px; border-radius: 12px;
-      color: var(--text-secondary); text-decoration: none;
-      margin-bottom: 5px; cursor: pointer; transition: var(--transition);
-    }
-    .nav-item:hover, .nav-item.active { background: rgba(99, 102, 241, 0.1); color: var(--primary); }
-    .nav-item i { width: 20px; font-size: 1.1rem; }
+                <div class="grid">
+                    <div class="glass-card">
+                        <div class="service-icon"><i class="fas fa-code"></i></div>
+                        <h3>Modern Web Dev</h3>
+                        <p>Clean, semantic code using HTML5, CSS3, and JavaScript to ensure your site is fast.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Responsive Design</h3>
+                        <p>Mobile-first approach ensuring your website looks stunning on all devices.</p>
+                    </div>
+                    <div class="glass-card">
+                        <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                        <h3>SEO & Analytics</h3>
+                        <p>Optimizing your site structure so search engines love you.</p>
+                    </div>
+                </div>
+            </div>
 
-    .sidebar-footer { margin-top: auto; padding-top: 2rem; border-top: 1px solid var(--glass-border); }
-    .user-profile { display: flex; align-items: center; gap: 12px; }
-    .user-avatar { width: 40px; height: 40px; border-radius: 10px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; }
-    .user-info span { display: block; font-size: 0.85rem; font-weight: 600; }
-    .user-info small { color: var(--text-muted); font-size: 0.75rem; }
+            <div id="portfolio" class="page">
+                <div class="section-header">
+                    <span class="section-label">My Work</span>
+                    <h2 class="section-title">Featured Projects</h2>
+                </div>
+                <div class="grid">
+                    <div class="glass-card portfolio-item">
+                        <img src="https://picsum.photos/seed/p1/400/250" alt="Project" class="portfolio-img">
+                        <div class="portfolio-body">
+                            <h3>Nexus Store</h3>
+                            <p>Full-scale online retail platform.</p>
+                        </div>
+                    </div>
+                    <div class="glass-card portfolio-item">
+                        <img src="https://picsum.photos/seed/p2/400/250" alt="Project" class="portfolio-img">
+                        <div class="portfolio-body">
+                            <h3>Focus Dashboard</h3>
+                            <p>Productivity tracking application.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    /* Main Content */
-    .main-content { margin-left: 280px; flex: 1; min-height: 100vh; position: relative; }
-    .page { display: none; padding: 3rem; animation: fadeIn 0.4s ease; max-width: 1200px; margin: 0 auto; }
-    .page.active { display: block; }
+            <div id="contact" class="page">
+                <div class="section-header">
+                    <span class="section-label">Connect</span>
+                    <h2 class="section-title">Let's Work Together</h2>
+                </div>
+                <div class="contact-container">
+                    <div class="glass-card">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Project Details</label>
+                                <textarea class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+            <footer>
+                <p>&copy; 2024 Codex.dev — Built by Vijayhayagrivan</p>
+            </footer>
+        </main>
+    </div>
 
-    /* Hero Section */
-    .hero { min-height: 80vh; display: flex; align-items: center; position: relative; overflow: hidden; border-radius: 30px; background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); margin-bottom: 4rem; padding
+    <script src="script.js"></script>
+</body>
+</html>
