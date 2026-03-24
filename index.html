@@ -317,4 +317,134 @@
     }
     @media (max-width: 640px) {
       .portfolio-grid, .services-grid, .testimonials-grid, .stats-grid { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: 1fr; }
+           .process-steps { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 100%; }
+      .slide-content { padding: 0 20px; }
+      .hero-cta { flex-direction: column; align-items: center; }
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+  </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<div class="app-wrapper">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon">C</div>
+      <div class="logo-text"><span>Codex</span>.dev</div>
+    </div>
+    <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-chevron-left" id="toggleIcon"></i></button>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a class="nav-item active" data-page="home" onclick="navigateTo('home')"><i class="fas fa-home"></i><span>Home</span></a>
+      <a class="nav-item" data-page="portfolio" onclick="navigateTo('portfolio')"><i class="fas fa-briefcase"></i><span>Portfolio</span></a>
+      <a class="nav-item" data-page="courses" onclick="navigateTo('courses')"><i class="fas fa-graduation-cap"></i><span>Courses</span></a>
+      <a class="nav-item" data-page="blog" onclick="navigateTo('blog')"><i class="fas fa-pen-nib"></i><span>Blog</span></a>
+      <a class="nav-item" data-page="contact" onclick="navigateTo('contact')"><i class="fas fa-envelope"></i><span>Contact</span></a>
+      <div class="nav-section-label" style="margin-top:20px">Sections</div>
+      <a class="nav-item" onclick="scrollToSection('services')"><i class="fas fa-code"></i><span>Services</span></a>
+      <a class="nav-item" onclick="scrollToSection('pricing')"><i class="fas fa-tags"></i><span>Pricing</span></a>
+      <a class="nav-item" onclick="scrollToSection('faq')"><i class="fas fa-circle-question"></i><span>FAQ</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-avatar">V</div>
+      <div class="sidebar-user-info">
+        <strong>Vijayhayagrivan</strong>
+        <span>vijayhayagrivan@gmail.com</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content" id="mainContent">
+
+    <!-- HOME PAGE -->
+    <div class="page active" id="page-home">
+      <!-- Hero Slider -->
+      <section class="hero-section">
+        <div class="slider-track" id="sliderTrack">
+          <div class="slide">
+            <div class="slide-bg" style="background-image:url('https://picsum.photos/seed/webdesign1/1400/800')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <div class="slide-badge"><i class="fas fa-circle" style="font-size:8px"></i> Available for Freelance</div>
+              <h1>Turning Your <span class="highlight">Ideas</span> into<br>Beautiful Websites</h1>
+              <p>I build clean, fast, and responsive websites that help individuals and small businesses stand out in the digital world.</p>
+              <div class="hero-cta">
+                <a href="#" class="btn btn-primary" onclick="navigateTo('portfolio')"><i class="fas fa-briefcase"></i> View My Work</a>
+                <a href="#" class="btn btn-outline" onclick="navigateTo('contact')"><i class="fas fa-paper-plane"></i> Hire Me</a>
+              </div>
+            </div>
+          </div>
+          <div class="slide">
+            <div class="slide-bg" style="background-image:url('https://picsum.photos/seed/webdesign2/1400/800')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <div class="slide-badge"><i class="fas fa-circle" style="font-size:8px"></i> Modern Design</div>
+              <h1>Design that <span class="highlight">Speaks</span><br>for Your Brand</h1>
+              <p>Every pixel is intentional. Every interaction is smooth. I craft digital experiences that leave a lasting impression on your audience.</p>
+              <div class="hero-cta">
+                <a href="#" class="btn btn-primary" onclick="scrollToSection('services')"><i class="fas fa-rocket"></i> Explore Services</a>
+                <a href="#" class="btn btn-outline" onclick="navigateTo('courses')"><i class="fas fa-graduation-cap"></i> Learn From Me</a>
+                </div>
+              </div>
+          </div>
+          <div class="slide">
+            <div class="slide-bg" style="background-image:url('https://picsum.photos/seed/webdesign3/1400/800')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <div class="slide-badge"><i class="fas fa-circle" style="font-size:8px"></i> Fast Performance</div>
+              <h1>Websites Built for <span class="highlight">Speed</span><br>&amp; Simplicity</h1>
+              <p>Performance matters. I optimize every project for lightning-fast load times, SEO, and a seamless user experience across all devices.</p>
+              <div class="hero-cta">
+                <a href="#" class="btn btn-primary" onclick="scrollToSection('pricing')"><i class="fas fa-tags"></i> View Pricing</a>
+                <a href="#" class="btn btn-outline" onclick="scrollToSection('faq')"><i class="fas fa-circle-question"></i> Got Questions?</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-dots" id="sliderDots">
+          <div class="dot active" onclick="goToSlide(0)"></div>
+          <div class="dot" onclick="goToSlide(1)"></div>
+          <div class="dot" onclick="goToSlide(2)"></div>
+        </div>
+        <div class="slider-arrows">
+          <button class="slider-arrow" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
+          <button class="slider-arrow" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section class="section">
+        <div class="about-grid">
+          <div class="about-image-wrap glass-card" style="padding:0;overflow:hidden;">
+            <img src="https://picsum.photos/seed/developer/600/450" alt="Vijayhayagrivan - Web Developer" />
+            <div class="about-image-badge">
+              <div class="badge-icon"><i class="fas fa-code"></i></div>
+              <div class="badge-info"><strong>2+ Years</strong><span>Building on the Web</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="section-label">About Me</div>
+            <h2 class="section-title">Hi, I'm <span style="color:var(--accent)">Vijayhayagrivan</span> 👋</h2>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:16px;">I'm a passionate web developer focused on creating clean, responsive, and modern websites for individuals and small businesses. My philosophy is simple: great design should be accessible to everyone.</p>
+            <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:24px;">I'm currently improving my skills every day and am open to exciting freelance opportunities. Whether you need a landing page, a full business website, or a personal portfolio — I've got you covered.</p>
+            <div class="availability-badge"><div class="availability-dot"></div> Available for new projects</div>
+            <div class="skills-list">
+              <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span><span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">Responsive Design</span><span class="skill-tag">UI/UX</span>
+              <span class="skill-tag">Performance</span><span class="skill-tag">SEO Basics</span><span class="skill-tag">Figma</span>
+            </div>
+          </div>
+        </div>
