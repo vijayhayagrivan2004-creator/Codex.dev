@@ -748,3 +748,78 @@
   }
   function nextSlide() { goToSlide((cur + 1) % 3); resetInt(); }
   function prevSlide() { goToSlide((cur + 2) % 3); resetInt(); }
+let si = setInterval(nextSlide, 5000);
+  function resetInt() { clearInterval(si); si = setInterval(nextSlide, 5000); }
+
+  // STATS COUNTER
+  let cStarted = false;
+  function startCounters() {
+    if (cStarted) return;
+    cStarted = true;
+    document.querySelectorAll('.counter').forEach(c => {
+      const t = +c.dataset.target, step = t / 112;
+      let v = 0;
+      const timer = setInterval(() => {
+        v += step;
+        if (v >= t) { v = t; clearInterval(timer); }
+        c.textContent = Math.floor(v);
+      }, 16);
+    });
+  }
+  const statsObs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) startCounters(); }), { threshold: 0.3 });
+  const statsSec = document.getElementById('stats');
+  if (statsSec) statsObs.observe(statsSec);
+
+  // FAQ
+  function toggleFAQ(q) {
+    const item = q.closest('.faq-item'), isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // PORTFOLIO FILTER
+  function filterPortfolio(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+      const m = cat === 'all' || card.dataset.category === cat;
+      card.style.opacity = m ? '1' : '0.3';
+      card.style.transform = m ? 'scale(1)' : 'scale(0.95)';
+      card.style.transition = 'all 0.3s ease';
+    });
+  }
+
+  // CONTACT FORM
+  function submitForm() {
+    let valid = true;
+    const fields = [
+      { id: 'name',    gid: 'group-name',    check: v => v.trim().length > 1 },
+      { id: 'email',   gid: 'group-email',   check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+      { id: 'subject', gid: 'group-subject', check: v => v.trim().length > 2 },
+      { id: 'message', gid: 'group-message', check: v => v.trim().length > 10 }
+    ];
+    fields.forEach(f => {
+      const inp = document.getElementById(f.id);
+      const grp = document.getElementById(f.gid);
+      if (!f.check(inp.value)) {
+        grp.classList.add('error');
+        valid = false;
+      } else {
+        grp.classList.remove('error');
+      }
+    });
+    if (valid) {
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  }
+
+  // BACK TO TOP
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
